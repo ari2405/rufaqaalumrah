@@ -2,29 +2,38 @@
 
 Brand: رفقاء العمرة / RUFAQA AL UMRAH — "Your Trusted Companions for a Blessed Journey"
 Palette: cream / matcha / deep green / gold. Phone + WhatsApp: +91 86550 89608.
-Prior NoorSafar brief is superseded.
+The earlier NoorSafar brief is superseded.
 
-## Phase 1 — Site (in progress)
-- [x] Image assets (Kaaba hero, Madinah, hotel)
-- [ ] Design tokens (cream/matcha/deep-green/gold) + fonts
-- [ ] Centralized config: business details, images, packages, FAQs, testimonials, services
+## Phase 1 — Public site
+- [x] Image assets
+- [ ] Design tokens (cream/matcha/deep green/gold) + fonts
+- [ ] Centralized editable config: business, images, packages, FAQs, testimonials, services
 - [ ] Header / Footer / sticky mobile Call–WhatsApp–Enquire bar
 - [ ] Home: hero, quick enquiry bar, why us, Makkah & Madinah split, packages, services, process, testimonials, FAQ, CTA
-- [ ] Packages listing with filters (departure city, duration, type) driven by URL search params
+- [ ] Packages listing with filters (departure city, duration, type) via URL search params, fed by the quick enquiry bar
 - [ ] Package detail pages
 - [ ] About Us, Umrah Guide, Services, Contact, FAQ
 - [ ] Legal: privacy, terms, refund & cancellation, disclaimer
-- [ ] Forms: validation + loading/success/error, WhatsApp prefilled enquiry
-- [ ] SEO: per-route metadata, OG, JSON-LD (Organization/LocalBusiness, Offer w/o invented prices, FAQPage), robots.txt, sitemap
+- [ ] Forms: validation + loading/success/error, WhatsApp prefilled enquiry, consent checkbox
+- [ ] SEO: per-route metadata + OG, JSON-LD (Organization/LocalBusiness, Offers without invented prices, FAQPage), robots.txt, sitemap (deferred until a public URL exists)
 - [ ] Lazy responsive images, accessibility pass
 
-## Phase 2 — Lovable Cloud
-- [ ] Enable Cloud, auth (admin role table + RLS)
-- [ ] Editable content tables (business settings, packages, FAQs, testimonials, services, images)
-- [ ] Admin dashboard to edit all of the above
-- [ ] Leads table + CRM dashboard (status, submission details)
-- [ ] Email notifications (needs verified custom domain — explain to user)
+## Phase 2 — Lovable Cloud backend
+- [ ] Auth + `user_roles` admin role with RLS
+- [ ] Content tables: site_settings, packages, faqs, testimonials, services
+- [ ] Leads table (CRM: status, full submission details, WhatsApp delivery status)
+- [ ] Admin dashboard: edit business details/links/images/FAQs/services/testimonials/packages
+- [ ] Admin leads dashboard with status workflow
+
+## Phase 3 — Notifications
+- [ ] Automated WhatsApp follow-up per new lead (personalised summary + packages URL)
+  - Compliant WhatsApp Business Cloud API / Twilio only; no consumer WhatsApp automation
+  - Reusable configurable message template + admin-configurable packages URL
+  - Consent checkbox on all lead forms
+  - Log delivery status (pending/sent/delivered/failed) against each lead
+  - Requires user-supplied provider credentials + approved template
+- [ ] Email lead notifications (needs verified custom domain — explain step to user)
 
 ## Content rules
-- No fabricated licences, awards, review counts, prices presented as confirmed, or partner claims.
-- Placeholder data must be clearly editable.
+- No fabricated licences, awards, review counts, confirmed prices, or partner claims.
+- All placeholder data must stay clearly editable.

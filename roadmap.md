@@ -27,6 +27,11 @@ The earlier NoorSafar brief is superseded.
 
 ## Phase 3 — Notifications
 - [ ] Automated WhatsApp follow-up per new lead (personalised summary + packages URL)
+- [ ] Three editable provider-ready templates in admin: enquiry confirmation, package availability follow-up, gentle reminder
+  - Placeholders: lead name, departure city, duration, package type, package URL
+  - Labelled "requires provider approval"; never shown as approved without it
+- [ ] Unchecked WhatsApp follow-up opt-in checkbox on every lead form; persist consent bool, timestamp, wording version, source form
+- [ ] Server-side enforcement: only opted-in leads queue/send; consent + delivery/template status visible in admin
   - Compliant WhatsApp Business Cloud API / Twilio only; no consumer WhatsApp automation
   - Reusable configurable message template + admin-configurable packages URL
   - Consent checkbox on all lead forms

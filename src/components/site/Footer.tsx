@@ -8,11 +8,13 @@ const PACKAGE_LINKS = [
   { to: "/packages/economy-umrah-10-nights", label: "Economy Umrah" },
   { to: "/packages/premium-umrah-12-nights", label: "Premium Umrah" },
   { to: "/packages/ramadan-umrah-last-ashra", label: "Ramadan Umrah" },
+  { to: "/packages/family-umrah-15-nights", label: "Family Umrah" },
 ] as const;
 
 const COMPANY_LINKS = [
   { to: "/about", label: "About Us" },
   { to: "/services", label: "Our Services" },
+  { to: "/umrah-guide", label: "Umrah Guide" },
   { to: "/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },
 ] as const;
@@ -20,18 +22,23 @@ const COMPANY_LINKS = [
 const LEGAL_LINKS = [
   { to: "/privacy-policy", label: "Privacy Policy" },
   { to: "/terms-and-conditions", label: "Terms & Conditions" },
-  { to: "/refund-and-cancellation-policy", label: "Refund & Cancellation" },
+  { to: "/refund-and-cancellation-policy", label: "Refund & Cancellation Policy" },
   { to: "/disclaimer", label: "Disclaimer" },
 ] as const;
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-secondary/50">
+    <footer className="border-t border-border bg-secondary/60">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
         <div>
-          <p className="font-display text-2xl font-semibold text-foreground">NoorSafar Umrah</p>
+          <p className="font-arabic text-2xl text-primary" lang="ar" dir="rtl">
+            {SITE.brandArabic}
+          </p>
+          <p className="mt-1 font-display text-lg font-semibold uppercase tracking-[0.14em] text-foreground">
+            Rufaqa Al Umrah
+          </p>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
-            {SITE.tagline}. We plan every detail so your journey stays focused on worship.
+            {SITE.tagline}. We plan the details so your journey stays focused on worship.
           </p>
           <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
             <li className="flex items-start gap-2">
@@ -48,9 +55,10 @@ export function Footer() {
             </li>
             <li className="flex items-start gap-2">
               <MapPin className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
-              {SITE.address}
+              {SITE.addressLine}
             </li>
           </ul>
+          <p className="mt-4 text-xs text-muted-foreground">{SITE.hours}</p>
         </div>
 
         <FooterColumn title="Packages" links={PACKAGE_LINKS} />
@@ -59,11 +67,12 @@ export function Footer() {
       </div>
 
       <div className="border-t border-border">
-        <div className="mx-auto max-w-7xl px-4 py-6 text-xs text-muted-foreground sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 py-6 text-xs leading-relaxed text-muted-foreground sm:px-6 lg:px-8">
           <p>
-            © {new Date().getFullYear()} NoorSafar Umrah. All rights reserved. NoorSafar Umrah is a
-            travel arrangement service; Umrah visas are issued at the sole discretion of the
-            authorities of the Kingdom of Saudi Arabia.
+            © {new Date().getFullYear()} Rufaqa Al Umrah. All rights reserved. Rufaqa Al Umrah
+            arranges travel services; Umrah visas are granted solely at the discretion of the
+            authorities of the Kingdom of Saudi Arabia. Prices shown are indicative and confirmed in
+            writing before booking.
           </p>
         </div>
       </div>

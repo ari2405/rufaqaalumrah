@@ -14,16 +14,369 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      faqs: {
+        Row: {
+          answer: string
+          created_at: string
+          id: string
+          published: boolean
+          question: string
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          answer: string
+          created_at?: string
+          id?: string
+          published?: boolean
+          question: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          answer?: string
+          created_at?: string
+          id?: string
+          published?: boolean
+          question?: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      leads: {
+        Row: {
+          consent_at: string | null
+          consent_text: string | null
+          consent_version: string | null
+          created_at: string
+          departure_city: string | null
+          duration: string | null
+          email: string | null
+          id: string
+          internal_notes: string
+          message: string | null
+          name: string
+          package_slug: string | null
+          package_type: string | null
+          phone: string
+          pilgrims: number | null
+          source_form: string
+          status: string
+          travel_date: string | null
+          updated_at: string
+          whatsapp_error: string | null
+          whatsapp_last_attempt_at: string | null
+          whatsapp_optin: boolean
+          whatsapp_provider_message_id: string | null
+          whatsapp_status: string
+          whatsapp_template_key: string | null
+        }
+        Insert: {
+          consent_at?: string | null
+          consent_text?: string | null
+          consent_version?: string | null
+          created_at?: string
+          departure_city?: string | null
+          duration?: string | null
+          email?: string | null
+          id?: string
+          internal_notes?: string
+          message?: string | null
+          name: string
+          package_slug?: string | null
+          package_type?: string | null
+          phone: string
+          pilgrims?: number | null
+          source_form?: string
+          status?: string
+          travel_date?: string | null
+          updated_at?: string
+          whatsapp_error?: string | null
+          whatsapp_last_attempt_at?: string | null
+          whatsapp_optin?: boolean
+          whatsapp_provider_message_id?: string | null
+          whatsapp_status?: string
+          whatsapp_template_key?: string | null
+        }
+        Update: {
+          consent_at?: string | null
+          consent_text?: string | null
+          consent_version?: string | null
+          created_at?: string
+          departure_city?: string | null
+          duration?: string | null
+          email?: string | null
+          id?: string
+          internal_notes?: string
+          message?: string | null
+          name?: string
+          package_slug?: string | null
+          package_type?: string | null
+          phone?: string
+          pilgrims?: number | null
+          source_form?: string
+          status?: string
+          travel_date?: string | null
+          updated_at?: string
+          whatsapp_error?: string | null
+          whatsapp_last_attempt_at?: string | null
+          whatsapp_optin?: boolean
+          whatsapp_provider_message_id?: string | null
+          whatsapp_status?: string
+          whatsapp_template_key?: string | null
+        }
+        Relationships: []
+      }
+      packages: {
+        Row: {
+          category: string
+          created_at: string
+          departure_cities: string[]
+          exclusions: string[]
+          highlights: string[]
+          hotel_stars: number
+          hotels: Json
+          id: string
+          image_alt: string | null
+          image_url: string | null
+          inclusions: string[]
+          itinerary: Json
+          madinah_nights: number
+          makkah_nights: number
+          months: string[]
+          nights: number
+          price_from: number | null
+          price_note: string
+          published: boolean
+          slug: string
+          sort_order: number
+          summary: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category?: string
+          created_at?: string
+          departure_cities?: string[]
+          exclusions?: string[]
+          highlights?: string[]
+          hotel_stars?: number
+          hotels?: Json
+          id?: string
+          image_alt?: string | null
+          image_url?: string | null
+          inclusions?: string[]
+          itinerary?: Json
+          madinah_nights?: number
+          makkah_nights?: number
+          months?: string[]
+          nights?: number
+          price_from?: number | null
+          price_note?: string
+          published?: boolean
+          slug: string
+          sort_order?: number
+          summary?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          departure_cities?: string[]
+          exclusions?: string[]
+          highlights?: string[]
+          hotel_stars?: number
+          hotels?: Json
+          id?: string
+          image_alt?: string | null
+          image_url?: string | null
+          inclusions?: string[]
+          itinerary?: Json
+          madinah_nights?: number
+          makkah_nights?: number
+          months?: string[]
+          nights?: number
+          price_from?: number | null
+          price_note?: string
+          published?: boolean
+          slug?: string
+          sort_order?: number
+          summary?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      services: {
+        Row: {
+          created_at: string
+          description: string
+          icon: string
+          id: string
+          published: boolean
+          sort_order: number
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description: string
+          icon?: string
+          id?: string
+          published?: boolean
+          sort_order?: number
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          icon?: string
+          id?: string
+          published?: boolean
+          sort_order?: number
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      site_settings: {
+        Row: {
+          key: string
+          updated_at: string
+          value: Json
+        }
+        Insert: {
+          key: string
+          updated_at?: string
+          value?: Json
+        }
+        Update: {
+          key?: string
+          updated_at?: string
+          value?: Json
+        }
+        Relationships: []
+      }
+      testimonials: {
+        Row: {
+          city: string
+          created_at: string
+          id: string
+          name: string
+          published: boolean
+          quote: string
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          city?: string
+          created_at?: string
+          id?: string
+          name: string
+          published?: boolean
+          quote: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          city?: string
+          created_at?: string
+          id?: string
+          name?: string
+          published?: boolean
+          quote?: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
+      whatsapp_templates: {
+        Row: {
+          active: boolean
+          approval_note: string
+          approval_status: string
+          body: string
+          created_at: string
+          id: string
+          key: string
+          language_code: string
+          name: string
+          provider_template_name: string
+          purpose: string
+          updated_at: string
+          variables: string[]
+        }
+        Insert: {
+          active?: boolean
+          approval_note?: string
+          approval_status?: string
+          body: string
+          created_at?: string
+          id?: string
+          key: string
+          language_code?: string
+          name: string
+          provider_template_name?: string
+          purpose?: string
+          updated_at?: string
+          variables?: string[]
+        }
+        Update: {
+          active?: boolean
+          approval_note?: string
+          approval_status?: string
+          body?: string
+          created_at?: string
+          id?: string
+          key?: string
+          language_code?: string
+          name?: string
+          provider_template_name?: string
+          purpose?: string
+          updated_at?: string
+          variables?: string[]
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "editor"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +503,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "editor"],
+    },
   },
 } as const

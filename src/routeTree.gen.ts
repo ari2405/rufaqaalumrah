@@ -11,11 +11,17 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DisclaimerRouteImport } from './routes/disclaimer'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as RefundAndCancellationPolicyRouteImport } from './routes/refund-and-cancellation-policy'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
 import { Route as UmrahGuideRouteImport } from './routes/umrah-guide'
+import { Route as PackagesIndexRouteImport } from './routes/packages.index'
+import { Route as PackagesSlugRouteImport } from './routes/packages.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -27,9 +33,19 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DisclaimerRoute = DisclaimerRouteImport.update({
   id: '/disclaimer',
   path: '/disclaimer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
@@ -43,6 +59,16 @@ const RefundAndCancellationPolicyRoute =
     path: '/refund-and-cancellation-policy',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
   id: '/terms-and-conditions',
   path: '/terms-and-conditions',
@@ -53,73 +79,125 @@ const UmrahGuideRoute = UmrahGuideRouteImport.update({
   path: '/umrah-guide',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PackagesIndexRoute = PackagesIndexRouteImport.update({
+  id: '/packages/',
+  path: '/packages/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PackagesSlugRoute = PackagesSlugRouteImport.update({
+  id: '/packages/$slug',
+  path: '/packages/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
   '/disclaimer': typeof DisclaimerRoute
+  '/faq': typeof FaqRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/refund-and-cancellation-policy': typeof RefundAndCancellationPolicyRoute
+  '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/umrah-guide': typeof UmrahGuideRoute
+  '/packages/$slug': typeof PackagesSlugRoute
+  '/packages/': typeof PackagesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
   '/disclaimer': typeof DisclaimerRoute
+  '/faq': typeof FaqRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/refund-and-cancellation-policy': typeof RefundAndCancellationPolicyRoute
+  '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/umrah-guide': typeof UmrahGuideRoute
+  '/packages/$slug': typeof PackagesSlugRoute
+  '/packages': typeof PackagesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
   '/disclaimer': typeof DisclaimerRoute
+  '/faq': typeof FaqRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/refund-and-cancellation-policy': typeof RefundAndCancellationPolicyRoute
+  '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/umrah-guide': typeof UmrahGuideRoute
+  '/packages/$slug': typeof PackagesSlugRoute
+  '/packages/': typeof PackagesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/contact'
     | '/disclaimer'
+    | '/faq'
     | '/privacy-policy'
     | '/refund-and-cancellation-policy'
+    | '/services'
+    | '/sitemap.xml'
     | '/terms-and-conditions'
     | '/umrah-guide'
+    | '/packages/$slug'
+    | '/packages/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/contact'
     | '/disclaimer'
+    | '/faq'
     | '/privacy-policy'
     | '/refund-and-cancellation-policy'
+    | '/services'
+    | '/sitemap.xml'
     | '/terms-and-conditions'
     | '/umrah-guide'
+    | '/packages/$slug'
+    | '/packages'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/contact'
     | '/disclaimer'
+    | '/faq'
     | '/privacy-policy'
     | '/refund-and-cancellation-policy'
+    | '/services'
+    | '/sitemap.xml'
     | '/terms-and-conditions'
     | '/umrah-guide'
+    | '/packages/$slug'
+    | '/packages/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
   DisclaimerRoute: typeof DisclaimerRoute
+  FaqRoute: typeof FaqRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   RefundAndCancellationPolicyRoute: typeof RefundAndCancellationPolicyRoute
+  ServicesRoute: typeof ServicesRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
   UmrahGuideRoute: typeof UmrahGuideRoute
+  PackagesSlugRoute: typeof PackagesSlugRoute
+  PackagesIndexRoute: typeof PackagesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -138,11 +216,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/disclaimer': {
       id: '/disclaimer'
       path: '/disclaimer'
       fullPath: '/disclaimer'
       preLoaderRoute: typeof DisclaimerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy-policy': {
@@ -159,6 +251,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RefundAndCancellationPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms-and-conditions': {
       id: '/terms-and-conditions'
       path: '/terms-and-conditions'
@@ -173,17 +279,37 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UmrahGuideRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/packages/': {
+      id: '/packages/'
+      path: '/packages'
+      fullPath: '/packages/'
+      preLoaderRoute: typeof PackagesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/packages/$slug': {
+      id: '/packages/$slug'
+      path: '/packages/$slug'
+      fullPath: '/packages/$slug'
+      preLoaderRoute: typeof PackagesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
   DisclaimerRoute: DisclaimerRoute,
+  FaqRoute: FaqRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   RefundAndCancellationPolicyRoute: RefundAndCancellationPolicyRoute,
+  ServicesRoute: ServicesRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsAndConditionsRoute: TermsAndConditionsRoute,
   UmrahGuideRoute: UmrahGuideRoute,
+  PackagesSlugRoute: PackagesSlugRoute,
+  PackagesIndexRoute: PackagesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

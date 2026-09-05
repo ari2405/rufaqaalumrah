@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as DisclaimerRouteImport } from './routes/disclaimer'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as RefundAndCancellationPolicyRouteImport } from './routes/refund-and-cancellation-policy'
 import { Route as ServicesRouteImport } from './routes/services'
@@ -33,6 +34,11 @@ const AboutRoute = AboutRouteImport.update({
 const DisclaimerRoute = DisclaimerRouteImport.update({
   id: '/disclaimer',
   path: '/disclaimer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
@@ -76,6 +82,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/disclaimer': typeof DisclaimerRoute
+  '/faq': typeof FaqRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/refund-and-cancellation-policy': typeof RefundAndCancellationPolicyRoute
   '/services': typeof ServicesRoute
@@ -88,6 +95,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/disclaimer': typeof DisclaimerRoute
+  '/faq': typeof FaqRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/refund-and-cancellation-policy': typeof RefundAndCancellationPolicyRoute
   '/services': typeof ServicesRoute
@@ -101,6 +109,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/disclaimer': typeof DisclaimerRoute
+  '/faq': typeof FaqRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/refund-and-cancellation-policy': typeof RefundAndCancellationPolicyRoute
   '/services': typeof ServicesRoute
@@ -115,6 +124,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/disclaimer'
+    | '/faq'
     | '/privacy-policy'
     | '/refund-and-cancellation-policy'
     | '/services'
@@ -127,6 +137,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/disclaimer'
+    | '/faq'
     | '/privacy-policy'
     | '/refund-and-cancellation-policy'
     | '/services'
@@ -139,6 +150,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/disclaimer'
+    | '/faq'
     | '/privacy-policy'
     | '/refund-and-cancellation-policy'
     | '/services'
@@ -152,6 +164,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   DisclaimerRoute: typeof DisclaimerRoute
+  FaqRoute: typeof FaqRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   RefundAndCancellationPolicyRoute: typeof RefundAndCancellationPolicyRoute
   ServicesRoute: typeof ServicesRoute
@@ -182,6 +195,13 @@ declare module '@tanstack/react-router' {
       path: '/disclaimer'
       fullPath: '/disclaimer'
       preLoaderRoute: typeof DisclaimerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy-policy': {
@@ -240,6 +260,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   DisclaimerRoute: DisclaimerRoute,
+  FaqRoute: FaqRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   RefundAndCancellationPolicyRoute: RefundAndCancellationPolicyRoute,
   ServicesRoute: ServicesRoute,

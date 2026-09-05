@@ -57,14 +57,15 @@ export type Pkg = {
   hotels: { city: string; name: string; distance: string; note: string }[];
 };
 
-export type JsonLike = Record<string, unknown>;
+export type JsonValue = string | number | boolean | null | JsonValue[] | { [key: string]: JsonValue };
+export type JsonLike = { [key: string]: JsonValue };
 
 export type SiteData = {
   settings: { key: string; value: JsonLike }[];
-  packages: Record<string, unknown>[];
-  services: Record<string, unknown>[];
-  faqs: Record<string, unknown>[];
-  testimonials: Record<string, unknown>[];
+  packages: JsonLike[];
+  services: JsonLike[];
+  faqs: JsonLike[];
+  testimonials: JsonLike[];
 };
 
 const FALLBACK_IMAGES = [madinahImg, hotelImg, heroImg];

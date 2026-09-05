@@ -30,30 +30,63 @@ export const submitLead = createServerFn({ method: "POST" })
 
     const pilgrims = data.pilgrims ? Number.parseInt(data.pilgrims, 10) : null;
 
-    const { error } = await supabaseAdmin.from("leads").insert({
-      name: data.name,
-      phone: data.phone,
-      email: data.email || null,
-      departure_city: data.departureCity || null,
-      travel_date: data.travelDate || null,
-      pilgrims: Number.isFinite(pilgrims) ? pilgrims : null,
-      duration: data.duration || null,
-      package_type: data.packageType || null,
-      package_slug: data.packageSlug || null,
-      message: data.message || null,
-      source_form: data.sourceForm || "contact",
-      whatsapp_optin: data.consent === true,
-      consent_text: data.consent ? data.consentText : null,
-      consent_version: data.consent ? data.consentVersion : null,
-      consent_at: data.consent ? new Date().toISOString() : null,
-      // Automated follow-up waits for an approved provider template; without
-      // opt-in it is never queued at all.
-      whatsapp_status: data.consent ? "pending" : "not_applicable",
-    });
+    const { data: lead, error } = await supabaseAdmin
+      .from("leads")
+      .insert({
+        name: data.name,
+        phone: data.phone,
+        email: data.email || null,
+        departure_city: data.departureCity || null,
+        travel_date: data.travelDate || null,
+        pilgrims: Number.isFinite(pilgrims) ? pilgrims : null,
+        duration: data.duration || null,
+        package_type: data.packageType || null,
+        package_slug: data.packageSlug || null,
+        message: data.message || null,
+        source_form: data.sourceForm || "contact",
+        whatsapp_optin: data.consent === true,
+        consent_text: data.consent ? data.consentText : null,
+        consent_version: data.consent ? data.consentVersion : null,
+        consent_at: data.consent ? new Date().toISOString() : null,
+        // Automated follow-up waits for an approved provider template; without
+        // opt-in it is never queued at all.
+        whatsapp_status: data.consent ? "pending" : "not_applicable",
+      })
+      .select("*")
+      .single();
 
-    if (error) {
-      console.error("Failed to store lead", error.message);
+    if (error || !lead) {
+      console.error("Failed to store lead", error?.message);
       throw new Error("Could not store enquiry");
+    }
+
+    // Automated follow-up: opt-in is re-checked inside the send layer, which
+    // refuses to send without an approved template and provider credentials.
+    if (data.consent === true) {
+      try {
+        const { sendLeadWhatsApp, recordOutcome } = await import("@/lib/whatsapp.server");
+        const { data: template } = await supabaseAdmin
+          .from("whatsapp_templates")
+          .select("*")
+          .eq("key", "enquiry_confirmation")
+          .eq("active", true)
+          .maybeSingle();
+        const { data: setting } = await supabaseAdmin
+          .from("site_settings")
+          .select("value")
+          .eq("key", "business")
+          .maybeSingle();
+        const packagesUrl =
+          ((setting?.value as Record<string, unknown> | null)?.['packagesUrl'] as string) || "/packages";
+        const outcome = await sendLeadWhatsApp({
+          lead: lead as never,
+          template: (template ?? null) as never,
+          packagesUrl,
+        });
+        await recordOutcome(supabaseAdmin as never, lead.id, outcome);
+      } catch (followUpError) {
+        console.error("WhatsApp follow-up attempt failed", followUpError);
+      }
     }
 
     return { ok: true };

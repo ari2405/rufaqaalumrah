@@ -16,6 +16,7 @@ import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as RefundAndCancellationPolicyRouteImport } from './routes/refund-and-cancellation-policy'
 import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
 import { Route as UmrahGuideRouteImport } from './routes/umrah-guide'
+import { Route as PackagesIndexRouteImport } from './routes/packages.index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -53,6 +54,11 @@ const UmrahGuideRoute = UmrahGuideRouteImport.update({
   path: '/umrah-guide',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PackagesIndexRoute = PackagesIndexRouteImport.update({
+  id: '/packages/',
+  path: '/packages/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -62,6 +68,7 @@ export interface FileRoutesByFullPath {
   '/refund-and-cancellation-policy': typeof RefundAndCancellationPolicyRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/umrah-guide': typeof UmrahGuideRoute
+  '/packages/': typeof PackagesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -71,6 +78,7 @@ export interface FileRoutesByTo {
   '/refund-and-cancellation-policy': typeof RefundAndCancellationPolicyRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/umrah-guide': typeof UmrahGuideRoute
+  '/packages': typeof PackagesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -81,6 +89,7 @@ export interface FileRoutesById {
   '/refund-and-cancellation-policy': typeof RefundAndCancellationPolicyRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/umrah-guide': typeof UmrahGuideRoute
+  '/packages/': typeof PackagesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -92,6 +101,7 @@ export interface FileRouteTypes {
     | '/refund-and-cancellation-policy'
     | '/terms-and-conditions'
     | '/umrah-guide'
+    | '/packages/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -101,6 +111,7 @@ export interface FileRouteTypes {
     | '/refund-and-cancellation-policy'
     | '/terms-and-conditions'
     | '/umrah-guide'
+    | '/packages'
   id:
     | '__root__'
     | '/'
@@ -110,6 +121,7 @@ export interface FileRouteTypes {
     | '/refund-and-cancellation-policy'
     | '/terms-and-conditions'
     | '/umrah-guide'
+    | '/packages/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -120,6 +132,7 @@ export interface RootRouteChildren {
   RefundAndCancellationPolicyRoute: typeof RefundAndCancellationPolicyRoute
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
   UmrahGuideRoute: typeof UmrahGuideRoute
+  PackagesIndexRoute: typeof PackagesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -173,6 +186,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UmrahGuideRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/packages/': {
+      id: '/packages/'
+      path: '/packages'
+      fullPath: '/packages/'
+      preLoaderRoute: typeof PackagesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -184,6 +204,7 @@ const rootRouteChildren: RootRouteChildren = {
   RefundAndCancellationPolicyRoute: RefundAndCancellationPolicyRoute,
   TermsAndConditionsRoute: TermsAndConditionsRoute,
   UmrahGuideRoute: UmrahGuideRoute,
+  PackagesIndexRoute: PackagesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

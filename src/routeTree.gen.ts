@@ -17,6 +17,7 @@ import { Route as FaqRouteImport } from './routes/faq'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as RefundAndCancellationPolicyRouteImport } from './routes/refund-and-cancellation-policy'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
 import { Route as UmrahGuideRouteImport } from './routes/umrah-guide'
 import { Route as PackagesIndexRouteImport } from './routes/packages.index'
@@ -63,6 +64,11 @@ const ServicesRoute = ServicesRouteImport.update({
   path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
   id: '/terms-and-conditions',
   path: '/terms-and-conditions',
@@ -93,6 +99,7 @@ export interface FileRoutesByFullPath {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/refund-and-cancellation-policy': typeof RefundAndCancellationPolicyRoute
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/umrah-guide': typeof UmrahGuideRoute
   '/packages/$slug': typeof PackagesSlugRoute
@@ -107,6 +114,7 @@ export interface FileRoutesByTo {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/refund-and-cancellation-policy': typeof RefundAndCancellationPolicyRoute
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/umrah-guide': typeof UmrahGuideRoute
   '/packages/$slug': typeof PackagesSlugRoute
@@ -122,6 +130,7 @@ export interface FileRoutesById {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/refund-and-cancellation-policy': typeof RefundAndCancellationPolicyRoute
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/umrah-guide': typeof UmrahGuideRoute
   '/packages/$slug': typeof PackagesSlugRoute
@@ -138,6 +147,7 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/refund-and-cancellation-policy'
     | '/services'
+    | '/sitemap.xml'
     | '/terms-and-conditions'
     | '/umrah-guide'
     | '/packages/$slug'
@@ -152,6 +162,7 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/refund-and-cancellation-policy'
     | '/services'
+    | '/sitemap.xml'
     | '/terms-and-conditions'
     | '/umrah-guide'
     | '/packages/$slug'
@@ -166,6 +177,7 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/refund-and-cancellation-policy'
     | '/services'
+    | '/sitemap.xml'
     | '/terms-and-conditions'
     | '/umrah-guide'
     | '/packages/$slug'
@@ -181,6 +193,7 @@ export interface RootRouteChildren {
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   RefundAndCancellationPolicyRoute: typeof RefundAndCancellationPolicyRoute
   ServicesRoute: typeof ServicesRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
   UmrahGuideRoute: typeof UmrahGuideRoute
   PackagesSlugRoute: typeof PackagesSlugRoute
@@ -245,6 +258,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms-and-conditions': {
       id: '/terms-and-conditions'
       path: '/terms-and-conditions'
@@ -285,6 +305,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   RefundAndCancellationPolicyRoute: RefundAndCancellationPolicyRoute,
   ServicesRoute: ServicesRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsAndConditionsRoute: TermsAndConditionsRoute,
   UmrahGuideRoute: UmrahGuideRoute,
   PackagesSlugRoute: PackagesSlugRoute,

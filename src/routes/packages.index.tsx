@@ -38,7 +38,7 @@ const field =
 function PackagesPage() {
   const { data } = useSuspenseQuery(siteDataQuery);
   const search = Route.useSearch();
-  const navigate = useNavigate({ from: "/packages" });
+  const navigate = useNavigate({ from: "/packages/" });
 
   const packages = resolvePackages(data);
   const business = resolveBusiness(data);
@@ -53,7 +53,7 @@ function PackagesPage() {
   );
 
   const update = (patch: Partial<Search>) =>
-    void navigate({ search: (prev: Search) => ({ ...prev, ...patch }) });
+    void navigate({ search: ((prev: Search) => ({ ...prev, ...patch })) as never });
 
   return (
     <>
@@ -106,7 +106,7 @@ function PackagesPage() {
           <div className="flex items-end">
             <button
               type="button"
-              onClick={() => void navigate({ search: { city: "", duration: "", type: "" } })}
+              onClick={() => void navigate({ search: { city: "", duration: "", type: "" } as never })}
               className="inline-flex w-full items-center justify-center rounded-full border border-border bg-card px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
             >
               Clear filters
@@ -135,7 +135,7 @@ function PackagesPage() {
             <div className="mt-5 flex flex-wrap justify-center gap-3">
               <button
                 type="button"
-                onClick={() => void navigate({ search: { city: "", duration: "", type: "" } })}
+                onClick={() => void navigate({ search: { city: "", duration: "", type: "" } as never })}
                 className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground"
               >
                 Clear filters

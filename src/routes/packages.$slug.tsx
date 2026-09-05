@@ -72,7 +72,8 @@ function PackageNotFound() {
         description="It may have been renamed or withdrawn. Browse the current Umrah packages instead."
       />
       <div className="mt-6 text-center">
-        <Link to="/packages" className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground">
+        <Link to="/packages"
+            search={{ city: "", duration: "", type: "" }} className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground">
           See all packages
         </Link>
       </div>
@@ -98,7 +99,8 @@ function PackageDetail() {
             Home
           </Link>
           <span aria-hidden="true"> / </span>
-          <Link to="/packages" className="hover:text-primary">
+          <Link to="/packages"
+            search={{ city: "", duration: "", type: "" }} className="hover:text-primary">
             Umrah Packages
           </Link>
           <span aria-hidden="true"> / </span>

@@ -79,6 +79,7 @@ function HomePage() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 to="/packages"
+            search={{ city: "", duration: "", type: "" }}
                 className="inline-flex items-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-semibold text-primary transition-colors hover:bg-background/90"
               >
                 See Umrah packages
@@ -200,6 +201,7 @@ function HomePage() {
         <div className="mt-10 text-center">
           <Link
             to="/packages"
+            search={{ city: "", duration: "", type: "" }}
             className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
           >
             Compare all packages

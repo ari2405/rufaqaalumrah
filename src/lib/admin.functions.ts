@@ -88,7 +88,7 @@ export const saveSetting = createServerFn({ method: "POST" })
     await assertAdmin(context as Ctx);
     const { error } = await context.supabase
       .from("site_settings")
-      .upsert({ key: data.key, value: data.value, updated_at: new Date().toISOString() });
+      .upsert({ key: data.key, value: data.value, updated_at: new Date().toISOString() } as never);
     if (error) throw new Error(error.message);
     return { ok: true };
   });
@@ -109,13 +109,13 @@ export const saveRow = createServerFn({ method: "POST" })
     const table = data.table as EditableTable;
     const payload = { ...data.values, updated_at: new Date().toISOString() };
     if (data.id) {
-      const { error } = await context.supabase.from(table).update(payload).eq("id", data.id);
+      const { error } = await context.supabase.from(table).update(payload as never).eq("id", data.id);
       if (error) throw new Error(error.message);
       return { ok: true, id: data.id };
     }
     const { data: inserted, error } = await context.supabase
       .from(table)
-      .insert(payload)
+      .insert(payload as never)
       .select("id")
       .single();
     if (error) throw new Error(error.message);

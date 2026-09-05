@@ -57,8 +57,10 @@ export type Pkg = {
   hotels: { city: string; name: string; distance: string; note: string }[];
 };
 
+export type JsonLike = Record<string, unknown>;
+
 export type SiteData = {
-  settings: { key: string; value: unknown }[];
+  settings: { key: string; value: JsonLike }[];
   packages: Record<string, unknown>[];
   services: Record<string, unknown>[];
   faqs: Record<string, unknown>[];

@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as DisclaimerRouteImport } from './routes/disclaimer'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as RefundAndCancellationPolicyRouteImport } from './routes/refund-and-cancellation-policy'
+import { Route as ServicesRouteImport } from './routes/services'
 import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
 import { Route as UmrahGuideRouteImport } from './routes/umrah-guide'
 import { Route as PackagesIndexRouteImport } from './routes/packages.index'
@@ -45,6 +46,11 @@ const RefundAndCancellationPolicyRoute =
     path: '/refund-and-cancellation-policy',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
   id: '/terms-and-conditions',
   path: '/terms-and-conditions',
@@ -72,6 +78,7 @@ export interface FileRoutesByFullPath {
   '/disclaimer': typeof DisclaimerRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/refund-and-cancellation-policy': typeof RefundAndCancellationPolicyRoute
+  '/services': typeof ServicesRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/umrah-guide': typeof UmrahGuideRoute
   '/packages/$slug': typeof PackagesSlugRoute
@@ -83,6 +90,7 @@ export interface FileRoutesByTo {
   '/disclaimer': typeof DisclaimerRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/refund-and-cancellation-policy': typeof RefundAndCancellationPolicyRoute
+  '/services': typeof ServicesRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/umrah-guide': typeof UmrahGuideRoute
   '/packages/$slug': typeof PackagesSlugRoute
@@ -95,6 +103,7 @@ export interface FileRoutesById {
   '/disclaimer': typeof DisclaimerRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/refund-and-cancellation-policy': typeof RefundAndCancellationPolicyRoute
+  '/services': typeof ServicesRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/umrah-guide': typeof UmrahGuideRoute
   '/packages/$slug': typeof PackagesSlugRoute
@@ -108,6 +117,7 @@ export interface FileRouteTypes {
     | '/disclaimer'
     | '/privacy-policy'
     | '/refund-and-cancellation-policy'
+    | '/services'
     | '/terms-and-conditions'
     | '/umrah-guide'
     | '/packages/$slug'
@@ -119,6 +129,7 @@ export interface FileRouteTypes {
     | '/disclaimer'
     | '/privacy-policy'
     | '/refund-and-cancellation-policy'
+    | '/services'
     | '/terms-and-conditions'
     | '/umrah-guide'
     | '/packages/$slug'
@@ -130,6 +141,7 @@ export interface FileRouteTypes {
     | '/disclaimer'
     | '/privacy-policy'
     | '/refund-and-cancellation-policy'
+    | '/services'
     | '/terms-and-conditions'
     | '/umrah-guide'
     | '/packages/$slug'
@@ -142,6 +154,7 @@ export interface RootRouteChildren {
   DisclaimerRoute: typeof DisclaimerRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   RefundAndCancellationPolicyRoute: typeof RefundAndCancellationPolicyRoute
+  ServicesRoute: typeof ServicesRoute
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
   UmrahGuideRoute: typeof UmrahGuideRoute
   PackagesSlugRoute: typeof PackagesSlugRoute
@@ -185,6 +198,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RefundAndCancellationPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms-and-conditions': {
       id: '/terms-and-conditions'
       path: '/terms-and-conditions'
@@ -222,6 +242,7 @@ const rootRouteChildren: RootRouteChildren = {
   DisclaimerRoute: DisclaimerRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   RefundAndCancellationPolicyRoute: RefundAndCancellationPolicyRoute,
+  ServicesRoute: ServicesRoute,
   TermsAndConditionsRoute: TermsAndConditionsRoute,
   UmrahGuideRoute: UmrahGuideRoute,
   PackagesSlugRoute: PackagesSlugRoute,
